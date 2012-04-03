@@ -5,7 +5,7 @@ change-attribute:
 	[ -f id_dsa ] && chmod 600 id_dsa || :
 
 gen-config:
-	cat config.d-enabled/* > ./config
+	for i in config.d-enabled/*; do echo "# ==> `basename $$i` <== #"; cat $$i; echo; done > ./config
 	echo done $@
 
 git-diff:
